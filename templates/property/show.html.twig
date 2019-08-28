@@ -3,14 +3,446 @@
 {% block title %}{{ property.title }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>{{ property.title }}</h1>
+<div class="container content_wrapper single-estate_property">
+    <div class="row">
+ 
+        <div class=" col-md-9 rightmargin full_width_prop">
 
-    <p>{{ property.description }}</p>
+            <h1 class="entry-title entry-prop">{{ property.title }}</h1> <span class="price_area">{{ property.getFormatedPrice }}</span>
+            
+            <div class="single-content listing-content">
+                <div class="notice_area">
+                    <div class="property_categs"> 
+                        <a href="#">Villas</a> in <a href="#">Sales</a>
+                    </div> 
+                    <span class="adres_area"> {{ property.address }}, <a href="#">{{ property.city }}</a> </span>
+                    
+                    <div id="add_favorites" class="isnotfavorite" data-postid="18331">add to favorites</div>
+                    <div class="download_pdf"></div>
+                    <div class="prop_social">
+                        <div class="no_views dashboad-tooltip" data-original-title="Number of Page Views"><i class="fa fa-eye-slash "></i>836</div> 
+                        <i class="fa fa-print" id="print_page" data-propid="18331"></i> 
+                        <a href="" target="_blank" class="share_facebook"><i class="fa fa-facebook fa-2"></i></a> 
+                        <a href="" class="share_tweet" target="_blank"><i class="fa fa-twitter fa-2"></i></a>
+                        <a href="" target="_blank" class="share_pinterest"> <i class="fa fa-pinterest fa-2"></i> </a>
+                        <a href="" class="social_email"> <i class="fa fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div id="carousel-listing" class="carousel slide post-carusel" data-ride="carousel" data-interval="false">
+                    <div class="carousel-inner">
+
+                        <div class="item">
+                            <a href="#" title="" rel="prettyPhoto" class="prettygalery"> 
+                                <img src="https://chicago.wpresidence.net/wp-content/uploads/2017/08/demo13-835x467.jpg" alt="" class="img-responsive lightbox_trigger">
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="wpestate_property_description">
+                    <h4 class="panel-title">Description</h4>
+                    <p>{{ property.description | nl2br }}</p>
+                </div>
+                <div class="panel-group property-panel" id="accordion_prop_addr">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"> 
+                        <a data-toggle="collapse" data-parent="#accordion_prop_addr" href="#collapseTwo">
+                        <h4 class="panel-title"> Address</h4> </a></div>
+                        <div id="collapseTwo" class="panel-collapse collapse in collapse show">
+                            <div class="panel-body row">
+                                <div class="listing_detail col-md-4"><strong>Address:</strong> {{ property.address }}</div>
+                                <div class="listing_detail col-md-4"><strong>City:</strong> <a href="#" rel="tag">{{ property.city }}</a></div>
+                                <div class="listing_detail col-md-4"><strong>Area:</strong> <a href="#" rel="tag">Ranch Triangle</a></div>
+                                <div class="listing_detail col-md-4"><strong>State/County:</strong> <a href="#" rel="tag">Illinois</a></div>
+                                <div class="listing_detail col-md-4"><strong>Zip:</strong> {{ property.postalcode }}</div>
+                                <div class="listing_detail col-md-4"><strong>Country:</strong> United States</div> 
+                                <a href="#" target="_blank" class="acc_google_maps">Open In Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-group property-panel" id="accordion_prop_details">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"> 
+                        <a data-toggle="collapse" data-parent="#accordion_prop_details" href="#collapseOne"><h4 class="panel-title" id="prop_det">Details</h4></a></div>
+                        <div id="collapseOne" class="panel-collapse collapse in collapse show">
+                            <div class="panel-body row">
+
+                                <div class="listing_detail col-md-4" id="propertyid_display"><strong>Property Id :</strong> {{ property.id }}</div>
+                                <div class="listing_detail col-md-4"><strong>Price:</strong> {{ property.getFormatedPrice }} <span class="price_label"></span></div>
+                                <div class="listing_detail col-md-4"><strong>Property Size:</strong> {{ property.surface }} ft<sup>2</sup></div>
+                                <div class="listing_detail col-md-4"><strong>Property Lot Size:</strong> 600,00 ft<sup>2</sup></div>
+                                <div class="listing_detail col-md-4"><strong>Rooms:</strong> {{ property.rooms }}</div>
+                                <div class="listing_detail col-md-4"><strong>Heating:</strong> {{ property.heatType }}</div>
+                                <div class="listing_detail col-md-4"><strong>Bathrooms:</strong> {{ property.bedrooms }}</div>
+                                <div class="listing_detail col-md-4"><strong>Year Built:</strong> 1890</div>
+                                <div class="listing_detail col-md-4"><strong>Garages:</strong> included</div>
+                                <div class="listing_detail col-md-4"><strong>Garage Size:</strong> 3 cars</div>
+                                <div class="listing_detail col-md-4"><strong>Available from:</strong> 2018-03-29</div>
+                                <div class="listing_detail col-md-4"><strong>Basement:</strong> full</div>
+                                <div class="listing_detail col-md-4"><strong>External Construction:</strong> barbeque</div>
+                                <div class="listing_detail col-md-4"><strong>Roofing:</strong> Old</div>
+                                <div class="listing_detail col-md-4"><strong>Floor:</strong> {{ property.floor }}</div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-group property-panel" id="accordion_prop_features">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"> <a data-toggle="collapse" data-parent="#accordion_prop_features" href="#collapseThree"><h4 class="panel-title" id="prop_ame">Features</h4> </a></div>
+                        <div id="collapseThree" class="panel-collapse collapse in collapse show">
+                            <div class="panel-body row">
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>attic</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>ocean view</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>wine cellar</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>basketball court</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>gym</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>pound</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>fireplace</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>lake view</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>pool</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>back yard</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>front yard</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>fenced yard</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>sprinklers</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>washer and dryer</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>balcony</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>concierge</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>private space</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>storage</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>recreation</div>
+                                <div class="listing_detail col-md-4"><i class="fa fa-check"></i>Roof Deck</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-group property-panel" id="accordion_video">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"> <a data-toggle="collapse" data-parent="#accordion_video" href="#collapseThreeOne"><h4 class="panel-title" id="prop_video">Video</h4> </a></div>
+                        <div id="collapseThreeOne" class="panel-collapse collapse in collapse show">
+                            <div class="panel-body">
+                                <div class="property_video_wrapper">
+                                    <div id="property_video_wrapper_player"></div>
+                                    <a href="https://player.vimeo.com/video/17882714?api=1&amp;player_id=player_1" data-autoplay="true" data-vbtype="video" class="venobox vbox-item"><img src="https://chicago.wpresidence.net/wp-content/uploads/2017/08/demo13-1110x623.jpg" alt="video image"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wpestate_agent_details_wrapper row">
+                    <div class="col-md-5 agentpic-wrapper">
+                        <div class="agent-listing-img-wrapper" data-link="https://chicago.wpresidence.net/agents/maria-barlow/">
+                            <a href="https://chicago.wpresidence.net/agents/maria-barlow/"> <img src="https://chicago.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-13-525x328.jpg" alt="user image" class="img-responsive agentpict"> </a>
+                            <div class="listing-cover"></div>
+                            <div class="listing-cover-title"><a href="https://chicago.wpresidence.net/agents/maria-barlow/">Maria Barlow</a></div>
+                        </div>
+                        <div class="agent_unit_social_single">
+                            <div class="social-wrapper"><a href="http://wpresidence.net/" target="_blank"><i class="fa fa-facebook"></i></a> <a href="http://wpresidence.net/" target="_blank"><i class="fa fa-twitter"></i></a> <a href="http://wpresidence.net/" target="_blank"><i class="fa fa-linkedin"></i></a> <a href="http://wpresidence.net/" target="_blank"><i class="fa fa-pinterest"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 agent_details">
+                        <div class="mydetails"> My details</div>
+                        <h3><a href="https://chicago.wpresidence.net/agents/maria-barlow/">Maria Barlow</a></h3>
+                        <div class="agent_position">sales executive</div>
+                        <div class="agent_detail agent_phone_class"><i class="fa fa-phone"></i><a href="tel:http://(305)%20555-4555">(305) 555-4555</a></div>
+                        <div class="agent_detail agent_mobile_class"><i class="fa fa-mobile"></i><a href="tel:http://(305)%20555-4555">(305) 555-4555</a></div>
+                        <div class="agent_detail agent_email_class"><i class="fa fa-envelope-o"></i><a href="mailto:http://maria@wpresidence.net">maria@wpresidence.net</a></div>
+                        <div class="agent_detail agent_skype_class"><i class="fa fa-skype"></i>maria.barlow</div>
+                    </div>
+                    <div class="row custom_details_container">
+                        <div class="developer_taxonomy agent_taxonomy"></div>
+                    </div>
+                </div>
+                <div class="agent_contanct_form ">
+                    <h4 id="show_contact">Contact Me</h4>
+                    <div id="schedule_meeting">Schedule a showing?</div>
+                    <div class="alert-box error">
+                        <div class="alert-message" id="alert-agent-contact"></div>
+                    </div>
+                    <div class="schedule_wrapper ">
+                        <div class="col-md-6">
+                            <input name="schedule_day" id="schedule_day" type="text" placeholder="Day" aria-required="true" class="form-control hasDatepicker">
+                        </div>
+                        <div class="col-md-6">
+                            <select name="schedule_hour" id="schedule_hour" class="form-control">
+                                <option value="0">Time</option>
+                                <option value="7:00">7:00</option>
+                                <option value="7:15">7:15</option>
+                                <option value="7:30">7:30</option>
+                                <option value="7:45">7:45</option>
+                                <option value="8:00">8:00</option>
+                                <option value="8:15">8:15</option>
+                                <option value="8:30">8:30</option>
+                                <option value="8:45">8:45</option>
+                                <option value="9:00">9:00</option>
+                                <option value="9:15">9:15</option>
+                                <option value="9:30">9:30</option>
+                                <option value="9:45">9:45</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:15">10:15</option>
+                                <option value="10:30">10:30</option>
+                                <option value="10:45">10:45</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:15">11:15</option>
+                                <option value="11:30">11:30</option>
+                                <option value="11:45">11:45</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:15">12:15</option>
+                                <option value="12:30">12:30</option>
+                                <option value="12:45">12:45</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:15">13:15</option>
+                                <option value="13:30">13:30</option>
+                                <option value="13:45">13:45</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:15">14:15</option>
+                                <option value="14:30">14:30</option>
+                                <option value="14:45">14:45</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:15">15:15</option>
+                                <option value="15:30">15:30</option>
+                                <option value="15:45">15:45</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:15">16:15</option>
+                                <option value="16:30">16:30</option>
+                                <option value="16:45">16:45</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:15">17:15</option>
+                                <option value="17:30">17:30</option>
+                                <option value="17:45">17:45</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:15">18:15</option>
+                                <option value="18:30">18:30</option>
+                                <option value="18:45">18:45</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:15">19:15</option>
+                                <option value="19:30">19:30</option>
+                                <option value="19:45">19:45</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input name="contact_name" id="agent_contact_name" type="text" placeholder="Your Name" aria-required="true" class="form-control">
+                    <input type="text" name="email" class="form-control" id="agent_user_email" aria-required="true" placeholder="Your Email">
+                    <input type="text" name="phone" class="form-control" id="agent_phone" placeholder="Your Phone">
+                    <textarea id="agent_comment" name="comment" class="form-control" cols="45" rows="8" aria-required="true">I'm interested in [ A must see Villa on Chicago Ave ] </textarea>
+                    <input type="submit" class="wpresidence_button agent_submit_class " id="agent_submit" value="Send Email">
+                    <input type="submit" class="wpresidence_button message_submit" value="Send Private Message">
+                    <div class=" col-md-12 message_explaining">You can reply to private messages from "Inbox" page in your user account.</div>
+                    <input name="prop_id" type="hidden" id="agent_property_id" value="18331">
+                    <input name="prop_id" type="hidden" id="agent_id" value="55">
+                    <input type="hidden" name="contact_ajax_nonce" id="agent_property_ajax_nonce" value="805d9cb148">
+                </div>
+   
+            </div>
+        </div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-xs-12 col-md-3 widget-area-sidebar" id="primary">
+            <ul class="xoxo">
+                <li id="property_categories-2" class="widget-container property_categories">
+                    <h3 class="widget-title-sidebar">Our Listings</h3>
+                    <div class="category_list_widget">
+                        <ul>
+                            <li><a href="https://chicago.wpresidence.net/listings/apartments/">Apartments</a><span class="category_no">(4)</span></li>
+                            <li><a href="https://chicago.wpresidence.net/listings/condos/">Condos</a><span class="category_no">(2)</span></li>
+                            <li><a href="https://chicago.wpresidence.net/listings/houses/">Houses</a><span class="category_no">(4)</span></li>
+                            <li><a href="https://chicago.wpresidence.net/listings/industrial/">Industrial</a><span class="category_no">(3)</span></li>
+                            <li><a href="https://chicago.wpresidence.net/listings/land/">Land</a><span class="category_no">(3)</span></li>
+                            <li><a href="https://chicago.wpresidence.net/listings/offices/">Offices</a><span class="category_no">(3)</span></li>
+                            <li><a href="https://chicago.wpresidence.net/listings/retail/">Retail</a><span class="category_no">(6)</span></li>
+                            <li><a href="https://chicago.wpresidence.net/listings/villas/">Villas</a><span class="category_no">(5)</span></li>
+                        </ul>
+                    </div>
+                </li>
+                <li id="advanced_search_widget-1" class="widget-container advanced_search_sidebar boxed_widget">
+                    <h3 class="widget-title-sidebar">Advanced Search</h3>
+                    <form role="search" method="get" action="https://chicago.wpresidence.net/advanced-search/">
+                        <input type="hidden" id="wpestate_regular_search_nonce" name="wpestate_regular_search_nonce" value="7de3fa2893">
+                        <input type="hidden" name="_wp_http_referer" value="/properties/a-must-see-villa-on-chicago-ave/">
+                        <input type="text" id="sidebar-custom-id" name="custom-id" placeholder="Custom ID" value="" class="advanced_select form-control">
+                        <div class="dropdown form-control ">
+                            <div data-toggle="dropdown" id="sidebar-adv_categ" class=" sidebar_filter_menu  " xx="" all="" types="" data-value="all">All Types <span class="caret  caret_sidebar "></span></div>
+                            <input type="hidden" name="filter_search_type[]" value="">
+                            <ul id="sidebar-categlist" class="dropdown-menu filter_menu" role="menu" aria-labelledby="sidebar-adv_categ">
+                                <li role="presentation" data-value="all">All Types</li>
+                                <li role="presentation" data-value="apartments">Apartments (4)</li>
+                                <li role="presentation" data-value="condos">Condos (2)</li>
+                                <li role="presentation" data-value="houses">Houses (4)</li>
+                                <li role="presentation" data-value="industrial">Industrial (3)</li>
+                                <li role="presentation" data-value="land">Land (3)</li>
+                                <li role="presentation" data-value="offices">Offices (3)</li>
+                                <li role="presentation" data-value="retail">Retail (6)</li>
+                                <li role="presentation" data-value="villas">Villas (5)</li>
+                            </ul>
+                        </div>
+                        <div class="dropdown form-control ">
+                            <div data-toggle="dropdown" id="sidebar-advanced_city" class=" sidebar_filter_menu  " xx="" all="" cities="" data-value="all">All Cities <span class="caret  caret_sidebar "></span></div>
+                            <input type="hidden" name="advanced_city" value="">
+                            <ul id="sidebar-adv-search-city" class="dropdown-menu filter_menu" role="menu" aria-labelledby="sidebar-advanced_city">
+                                <li role="presentation" data-value="all" data-value2="all">All Cities</li>
+                                <li role="presentation" data-value="chicago" data-value2="chicago" data-parentcounty="e2808eillinois">Chicago (30)</li>
+                            </ul>
+                        </div>
+                        <div class="dropdown form-control ">
+                            <div data-toggle="dropdown" id="sidebar-advanced_area" class=" sidebar_filter_menu  " xx="" all="" areas="" data-value="all">All Areas <span class="caret  caret_sidebar "></span></div>
+                            <input type="hidden" name="advanced_area" value="">
+                            <ul id="sidebar-adv-search-area" class="dropdown-menu filter_menu" role="menu" aria-labelledby="sidebar-advanced_area">
+                                <li role="presentation" data-value="all">All Areas</li>
+                                <li role="presentation" data-value="belmont-gardens" data-parentcity="chicago">Belmont Gardens (13)</li>
+                                <li role="presentation" data-value="ranch-triangle" data-parentcity="chicago">Ranch Triangle (8)</li>
+                                <li role="presentation" data-value="sheffield-neighbors" data-parentcity="chicago">Sheffield Neighbors (9)</li>
+                            </ul>
+                        </div>
+                        <div class="dropdown form-control ">
+                            <div data-toggle="dropdown" id="sidebar-min-bedrooms" class=" sidebar_filter_menu  " xx="" all="" min.="" bedrooms="" data-value="all">Min. Bedrooms <span class="caret  caret_sidebar "></span></div>
+                            <input type="hidden" name="min-bedrooms" value="">
+                            <ul id="sidebar-search-min-bedrooms" class="dropdown-menu filter_menu" role="menu" aria-labelledby="sidebar-min-bedrooms">
+                                <li role="presentation" data-value="all">Min. Bedrooms</li>
+                                <li data-value="1" value="1">1</li>
+                                <li data-value="2" value="2">2</li>
+                                <li data-value="3" value="3">3</li>
+                                <li data-value="4" value="4">4</li>
+                                <li data-value="5" value="5">5</li>
+                                <li data-value="6" value="6">6</li>
+                                <li data-value="7" value="7">7</li>
+                                <li data-value="8" value="8">8</li>
+                                <li data-value="9" value="9">9</li>
+                                <li data-value="10" value="10">10</li>
+                            </ul>
+                        </div>
+                        <input type="text" id="sidebar-min-size" name="min-size" placeholder="Min Size" value="" class="advanced_select form-control">
+                        <input type="text" id="sidebar-max-size" name="max-size" placeholder="Max Size" value="" class="advanced_select form-control">
+                        <div class="dropdown form-control ">
+                            <div data-toggle="dropdown" id="sidebar-baths" class=" sidebar_filter_menu  " xx="" all="" baths="" data-value="all">Baths <span class="caret  caret_sidebar "></span></div>
+                            <input type="hidden" name="baths" value="">
+                            <ul id="sidebar-search-baths" class="dropdown-menu filter_menu" role="menu" aria-labelledby="sidebar-baths">
+                                <li role="presentation" data-value="all">Baths</li>
+                                <li data-value="1" value="1">1</li>
+                                <li data-value="2" value="2">2</li>
+                                <li data-value="3" value="3">3</li>
+                                <li data-value="4" value="4">4</li>
+                                <li data-value="5" value="5">5</li>
+                                <li data-value="6" value="6">6</li>
+                                <li data-value="7" value="7">7</li>
+                                <li data-value="8" value="8">8</li>
+                                <li data-value="9" value="9">9</li>
+                                <li data-value="10" value="10">10</li>
+                            </ul>
+                        </div>
+                        <div class="dropdown form-control ">
+                            <div data-toggle="dropdown" id="sidebar-stories" class=" sidebar_filter_menu  " xx="" all="" stories="" data-value="all">Stories <span class="caret  caret_sidebar "></span></div>
+                            <input type="hidden" name="stories" value="">
+                            <ul id="sidebar-stories" class="dropdown-menu filter_menu" role="menu" aria-labelledby="sidebar-stories">
+                                <li role="presentation" data-value="all">Stories</li>
+                                <li role="presentation" data-value="1">1</li>
+                                <li role="presentation" data-value="2">2</li>
+                                <li role="presentation" data-value="3">3</li>
+                                <li role="presentation" data-value="4">4</li>
+                                <li role="presentation" data-value="5">5</li>
+                                <li role="presentation" data-value="6">6</li>
+                            </ul>
+                        </div>
+                        <div class="adv_search_slider">
+                            <p>
+                                <label for="amount">Price range:</label> <span id="amount_wd" class="wpresidence_slider_price">$ 0 to $ 1,500,000</span></p>
+                            <div id="slider_price_widget" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 100%;"></div><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 100%;"></span></div>
+                            <input type="hidden" id="price_low_widget" name="price_low" value="0">
+                            <input type="hidden" id="price_max_widget" name="price_max" value="1500000">
+                        </div>
+                        <div class="adv_extended_options_text" id="adv_extended_options_text_widget">More Search Options</div>
+                        <div class="extended_search_check_wrapper"><span id="adv_extended_close_widget" class="adv_extended_close_button"><i class="fa fa-times"></i></span>
+                            <div class="extended_search_checker">
+                                <input type="checkbox" id="atticwidget" name="attic" value="1">
+                                <label for="atticwidget">attic</label>
+                            </div>
+                            <div class="extended_search_checker">
+                                <input type="checkbox" id="gas_heatwidget" name="gas_heat" value="1">
+                                <label for="gas_heatwidget">gas heat</label>
+                            </div>
+                            <div class="extended_search_checker">
+                                <input type="checkbox" id="gymwidget" name="gym" value="1">
+                                <label for="gymwidget">gym</label>
+                            </div>
+                            <div class="extended_search_checker">
+                                <input type="checkbox" id="fireplacewidget" name="fireplace" value="1">
+                                <label for="fireplacewidget">fireplace</label>
+                            </div>
+                            <div class="extended_search_checker">
+                                <input type="checkbox" id="back_yardwidget" name="back_yard" value="1">
+                                <label for="back_yardwidget">back yard</label>
+                            </div>
+                            <div class="extended_search_checker">
+                                <input type="checkbox" id="washer_and_dryerwidget" name="washer_and_dryer" value="1">
+                                <label for="washer_and_dryerwidget">washer and dryer</label>
+                            </div>
+                            <div class="extended_search_checker">
+                                <input type="checkbox" id="balconywidget" name="balcony" value="1">
+                                <label for="balconywidget">balcony</label>
+                            </div>
+                            <div class="extended_search_checker">
+                                <input type="checkbox" id="storagewidget" name="storage" value="1">
+                                <label for="storagewidget">storage</label>
+                            </div>
+                        </div>
+                        <button class="wpresidence_button" id="advanced_submit_widget">Search</button>
+                    </form>
+                </li>
+                <li id="footer_latest_widget-1" class="widget-container latest_listings">
+                    <h3 class="widget-title-sidebar">Latest Listings</h3>
+                    <div class="latest_listings list_type">
+                        <div class="widget_latest_internal" data-link="https://chicago.wpresidence.net/properties/beautiful-home-for-sale-in-chicago/">
+                            <div class="widget_latest_listing_image">
+                                <a href="https://chicago.wpresidence.net/properties/beautiful-home-for-sale-in-chicago/"><img src="https://chicago.wpresidence.net/wp-content/uploads/2017/09/the-kelvin-apartments-exterior-105x70.jpg" alt="slider-thumb" data-original="https://chicago.wpresidence.net/wp-content/uploads/2017/09/the-kelvin-apartments-exterior-105x70.jpg" class="lazyload img_responsive" height="70" width="105"></a>
+                            </div>
+                            <div class="listing_name "><span class="widget_latest_title"><a href="https://chicago.wpresidence.net/properties/beautiful-home-for-sale-in-chicago/">Beautiful home for sale in Chicago</a></span> <span class="widget_latest_price">$ 1,500,000 <span class="price_label"></span></span>
+                            </div>
+                        </div>
+                        <div class="widget_latest_internal" data-link="https://chicago.wpresidence.net/properties/industrial-location-for-rent/">
+                            <div class="widget_latest_listing_image">
+                                <a href="https://chicago.wpresidence.net/properties/industrial-location-for-rent/"><img src="https://chicago.wpresidence.net/wp-content/uploads/2017/08/5-105x70.jpg" alt="slider-thumb" data-original="https://chicago.wpresidence.net/wp-content/uploads/2017/08/5-105x70.jpg" class="lazyload img_responsive" height="70" width="105"></a>
+                            </div>
+                            <div class="listing_name "><span class="widget_latest_title"><a href="https://chicago.wpresidence.net/properties/industrial-location-for-rent/">Industrial Location for Rent</a></span> <span class="widget_latest_price">$ 100 <span class="price_label">/ sq. ft.</span></span>
+                            </div>
+                        </div>
+                        <div class="widget_latest_internal" data-link="https://chicago.wpresidence.net/properties/10-year-old-factory-for-rent/">
+                            <div class="widget_latest_listing_image">
+                                <a href="https://chicago.wpresidence.net/properties/10-year-old-factory-for-rent/"><img src="https://chicago.wpresidence.net/wp-content/uploads/2017/08/9-105x70.jpg" alt="slider-thumb" data-original="https://chicago.wpresidence.net/wp-content/uploads/2017/08/9-105x70.jpg" class="lazyload img_responsive" height="70" width="105"></a>
+                            </div>
+                            <div class="listing_name "><span class="widget_latest_title"><a href="https://chicago.wpresidence.net/properties/10-year-old-factory-for-rent/">10 Year old factory for rent</a></span> <span class="widget_latest_price">$ 100 <span class="price_label">/ sq. ft.</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id="mortgage_widget-1" class="widget-container mortgage_calculator_li boxed_widget">
+                    <h3 class="widget-title-sidebar"> Mortgage Calculator</h3>
+                    <div id="input_formula">
+                        <label for="sale_price">Sale Price</label>
+                        <div class="sale_price_wrapper">
+                            <input type="text" id="sale_price" value="100000" class="form-control">
+                        </div>
+                        <label for="percent_down">Percent Down</label>
+                        <div class="percent_down_wrapper">
+                            <input type="text" id="percent_down" value="10" class="form-control">
+                        </div>
+                        <label for="term_years">Term (Years)</label>
+                        <div class="years_wrapper">
+                            <input type="text" id="term_years" value="30" class="form-control">
+                        </div>
+                        <label for="interest_rate">Interest Rate in %</label>
+                        <div class="interest_wrapper">
+                            <input type="text" id="interest_rate" value="5" class="form-control">
+                        </div>
+                        <div id="morg_results"> <span id="am_fin"></span> <span id="morgage_pay"></span> <span id="anual_pay"></span></div>
+                        <button class="wpresidence_button" id="morg_compute">Calculate</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
+
 {% endblock %}

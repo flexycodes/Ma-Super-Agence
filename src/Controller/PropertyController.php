@@ -68,9 +68,15 @@ class PropertyController extends AbstractController
     /**
      * @Route("/biens/{slug}-{id}", name="property.show", requirements={"slug": "[a-z0-9\-]*"})
      */
-    public function show($slug, $id)
+    public function show(Property $property, String $slug )
     {
-        $property = $this->repository->find($id);
+        $getSlug = $property->getSlug();
+        if( $getSlug !== $slug ):
+            return $this->redirectToRoute('property.show', [
+                'id' => $property->getId(),
+                'slug' => $getSlug
+            ]);
+        endif;
 
         return $this->render('property/show.html.twig', [
             'controller_name' => 'PropertyController',
