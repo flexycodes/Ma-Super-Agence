@@ -5,9 +5,16 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
+ * @UniqueEntity(
+ *     fields={"title"},
+ *     errorPath="title",
+ *     message="This title is already in use."
+ * )
  */
 class Property
 {
@@ -24,57 +31,105 @@ class Property
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, unique=true)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 255,
+     *      minMessage = "Your title must be at least {{ limit }} characters long",
+     *      maxMessage = "Your title cannot be longer than {{ limit }} characters"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     */
+    private $shortdescription;
+    
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = 10,
+     *      max = 400,
+     *      minMessage = "You must be at least {{ limit }} tall to enter",
+     *      maxMessage = "You cannot be taller than {{ limit }} to enter"
+     * )
      */
     private $surface;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      minMessage = "You must be at least {{ limit }} tall to enter",
+     *      maxMessage = "You cannot be taller than {{ limit }} to enter"
+     * )
      */
     private $rooms;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      minMessage = "You must be at least {{ limit }} tall to enter",
+     *      maxMessage = "You cannot be taller than {{ limit }} to enter"
+     * )
      */
     private $bedrooms;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 10,
+     *      minMessage = "You must be at least {{ limit }} tall to enter",
+     *      maxMessage = "You cannot be taller than {{ limit }} to enter"
+     * )
      */
     private $floor;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = 10,
+     *      max = 1000000000,
+     *      minMessage = "You must be at least {{ limit }} tall to enter",
+     *      maxMessage = "You cannot be taller than {{ limit }} to enter"
+     * )
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank
      */
     private $heat;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex("/^[0-9]{5}$/")
      */
     private $postal_code;
 
@@ -266,6 +321,18 @@ class Property
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getShortdescription(): ?string
+    {
+        return $this->shortdescription;
+    }
+
+    public function setShortdescription(string $shortdescription): self
+    {
+        $this->shortdescription = $shortdescription;
 
         return $this;
     }

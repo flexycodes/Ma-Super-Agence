@@ -8,6 +8,19 @@ html,body,div,span,applet,object,iframe,.advanced_search_map h1,h2,h3,h4,h5,h6,p
 div.panel-collapse {
     background: #fff;
 }
-nav.navbar.navbar-expand-lg.navbar-dark.bg-primary {
+.single-estate_property {
+    margin-top: 50px;
+}
+.submit_property_front_wrapper {
     margin-bottom: 50px;
+}
+.table_properties th, 
+.table_properties td {
+    text-align: center !important;
+}
+.table_properties form.form_delete {
+    display: inline-block;
+}
+.td-paragraph-padding-1 {
+    margin-top: 20px;
 }

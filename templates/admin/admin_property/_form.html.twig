@@ -1,0 +1,140 @@
+{{ form_start(form_property) }}
+
+    <div class="submit_property_front_wrapper">
+
+        {% if title_action == 'Edit' %}
+            <h1>{{ title_action }}  : {{ property.title }}</h1>
+        {% else %}
+            <h1>{{ title_action }}</h1>
+        {% endif %}
+
+        <div class="single_step step_1" style="display: block;">
+            <div class="col-md-12 add-estate profile-page profile-onprofile row">
+                <div class="submit_container row">
+                    <div class="col-md-4 profile_label">
+                        <div class="user_details_row">Property Description Test</div>
+                        <div class="user_profile_explain">This description will appear first in page. Keeping it as a brief overview makes it easier to read.</div>
+                        <input type="hidden" name="is_user_submit" value="1">
+                    </div>
+                    <div class="col-md-8">
+                        <p class="full_form">
+                            {{ form_row(form_property.title, {
+                                label: 'Title *'
+                            }) }}
+                        </p>
+
+                        <p class="full_form">
+                            {{ form_row(form_property.shortdescription, {
+                                label: 'Summary *'
+                            }) }}
+                        </p>
+
+                        <p class="full_form">
+                            {{ form_row(form_property.description, {
+                                label: 'Description *'
+                            }) }}
+                        </p>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 add-estate profile-page profile-onprofile row">
+                <div class="submit_container row">
+                    <div class="col-md-4 profile_label">
+                        <div class="user_details_row">Property Price</div>
+                        <div class="user_profile_explain">Adding a price will make it easier for users to find your property in search results.</div>
+                    </div>
+                    <div class="col-md-8">
+
+                        <p class="col-md-12 half_form">
+                            {{ form_row(form_property.price, {
+                                label: 'Price in $ (only numbers) *'
+                            }) }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 add-estate profile-page profile-onprofile row">
+                <div class="submit_container row">
+                    <div class="col-md-4 profile_label">
+                        <div class="user_details_row">Property features</div>
+                        <div class="user_profile_explain">Adding a price will make it easier for users to find your property in search results.</div>
+                    </div>
+                    <div class="col-md-8">
+
+                        <p class="col-md-12 half_form">
+                            {{ form_row(form_property.price, {
+                                label: 'Price in $ (only numbers) *'
+                            }) }}
+                        </p>
+
+                        <p class="col-md-12 half_form">
+                            {{ form_row(form_property.surface, {
+                                label: 'Surface *'
+                            }) }}
+                        </p>
+                        <p class="col-md-6 half_form ">
+                            {{ form_row(form_property.rooms, {
+                                label: 'Rooms *'
+                            }) }}
+                        </p>
+                        <p class="col-md-6 half_form">
+                            {{ form_row(form_property.bedrooms, {
+                                label: 'Bedrooms *'
+                            }) }}
+                        </p>
+                        <p class="col-md-6 half_form">
+                            {{ form_row(form_property.floor, {
+                                label: 'Floor *'
+                            }) }}
+                        </p>
+                        <p class="col-md-6 half_form">
+                            {{ form_row(form_property.heat, {
+                                label: 'Heat *'
+                            }) }}
+                        </p>
+                        <p class="col-md-6 half_form">
+                            {{ form_row(form_property.bedrooms, {
+                                label: 'Bedrooms *'
+                            }) }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        <div class="single_step step_3">
+            <div class="col-md-12 add-estate profile-page profile-onprofile row">
+                <div class="submit_container row">
+                    <div class="col-md-4 profile_label">
+                        <div class="user_details_row">Listing Location</div>
+                        <div class="user_profile_explain">Use the button to save your property location on the map as well.</div>
+                    </div>
+                    <div class="col-md-8">
+                        
+                        {{ form_row(form_property.city, {
+                            label: 'City *'
+                        }) }}
+                        {{ form_row(form_property.address, {
+                            label: 'Address *'
+                        }) }}
+
+                        {{ form_row(form_property.postal_code, {
+                            label: 'Zip Code *'
+                        }) }}
+
+                        {{ form_row(form_property.sold, {
+                            label: 'Sold *'
+                        }) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation_container_footer">
+            <button type="submit" class="btn btn-primary wpresidence_button">{{ button_text | default('Save') }}</button>
+        </div>
+    </div>
+
+{{ form_end(form_property) }}

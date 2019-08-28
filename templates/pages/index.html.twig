@@ -60,7 +60,7 @@
                     
                     <div class="listing_unit_price_wrapper">{{ property.getFormatedPrice }} <span class="price_label"></span></div>
                     
-                    <div class="listing_details the_grid_view">{{ property.description }}</div>
+                    <div class="listing_details the_grid_view">{{ property.shortdescription | raw }}</div>
                     
                     <div class="property_listing_details"> 
                         <span class="inforoom">{{ property.rooms }}</span><span class="infobath">{{ property.bedrooms }}</span> 
