@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Agence{% endblock %}
+
+{% block body %}
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Tous nos biens</h1>
+      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <p>
+        <a href="#" class="btn btn-primary my-2">Ajouter un bien</a>
+        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+
+        {% for property in properties %}
+
+            <div class="col-md-4 has_prop_slider listing_wrapper" data-org="6" data-listid="139">
+                <div class="property_listing" data-link="" style="">
+                    <div class="listing-unit-img-wrapper">
+
+                        <div class="prop_new_details">
+                            <div class="prop_new_details_back"></div>
+                                <div class="property_media">
+                                    <i class="fa fa-video-camera" aria-hidden="true"></i>
+                                    <i class="fa fa-camera" aria-hidden="true"></i> 6</div>
+                                    <div class="property_location_image">
+                                    <span class="property_marker"></span>
+                                    <div><a href="#">{{ property.address }}</a>,</div>
+                                    <div><a href="#">{{ property.city }}</a></div>
+                                </div>
+                            </div>
+                        <div>
+                      
+                            <div class="item">
+                                <a href="{{ path('property.show', {'id': property.id, 'slug': property.slug }) }}">
+                                <img width="525" height="328" src="{{ asset('assets/img/properties/1.jpg') }}" class="lazyload img-responsive wp-post-image" alt="{{ property.title }}"></a>
+                            </div>
+            
+
+                            <div class="tag-wrapper">
+                                <div class="featured_div">Featured</div>
+                                    <div class="status-wrapper">
+                                        <div class="action_tag_wrapper Sales ">Sales</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <h4><a href="{{ path('property.show', {'id': property.id, 'slug': property.slug }) }}">{{ property.title }}</a></h4>
+                    
+                    <div class="listing_unit_price_wrapper">{{ property.getFormatedPrice }} <span class="price_label"></span></div>
+                    
+                    <div class="listing_details the_grid_view">{{ property.description }}</div>
+                    
+                    <div class="property_listing_details"> 
+                        <span class="inforoom">{{ property.rooms }}</span><span class="infobath">{{ property.bedrooms }}</span> 
+                        <span class="infosize">{{ property.surface }} ft<sup>2</sup></span>
+                        <a href="{{ path('property.show', {'id': property.id, 'slug': property.slug }) }}" class="unit_details_x">full info</a>
+                    </div>
+
+                    <div class="property_location">
+                        <div class="property_agent_wrapper">
+                            <div class="property_agent_image" style="background-image:url('https://chicago.wpresidence.net/wp-content/uploads/2014/05/agent4-1-14-13-120x120.jpg')"></div>
+                                <div class="property_agent_image_sign">
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                </div> 
+                                <a href="#">Maria Barlow</a>
+                            </div>
+                            <div class="listing_actions">
+                                <span class="icon-fav icon-fav-off" data-original-title="add to favorites" data-postid="139"></span> 
+                                <span class="compare-action" data-original-title="compare" data-pid="139"></span>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        {% endfor %}
+      
+      </div>
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
