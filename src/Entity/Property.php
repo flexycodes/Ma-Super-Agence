@@ -58,7 +58,7 @@ class Property
      * @ORM\Column(type="integer")
      * @Assert\Range(
      *      min = 10,
-     *      max = 400,
+     *      max = 500,
      *      minMessage = "You must be at least {{ limit }} tall to enter",
      *      maxMessage = "You cannot be taller than {{ limit }} to enter"
      * )

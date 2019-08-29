@@ -24,3 +24,13 @@ div.panel-collapse {
 .td-paragraph-padding-1 {
     margin-top: 20px;
 }
+.property_listing h4{
+    text-transform: capitalize;
+}
+.count {
+    background: #fff;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
